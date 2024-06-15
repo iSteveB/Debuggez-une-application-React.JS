@@ -4,8 +4,7 @@ import { getMonth } from '../../helpers/Date';
 import './style.scss';
 
 const EventCard = ({imageSrc, imageAlt, date = new Date(), title, label, small = false, ...props}) => {
-  console.log(date)
-return (
+ (
 	<div
 		data-testid='card-testid'
 		className={`EventCard${small ? ' EventCard--small' : ''}`}
