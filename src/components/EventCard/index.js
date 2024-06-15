@@ -3,7 +3,7 @@ import { getMonth } from '../../helpers/Date';
 
 import './style.scss';
 
-const EventCard = ({imageSrc, imageAlt, date = new Date(), title, label, small = false, ...props}) => {
+const EventCard = ({imageSrc, imageAlt, date = new Date(), title, label, small = false, ...props}) =>
  (
 	<div
 		data-testid='card-testid'
@@ -22,7 +22,7 @@ const EventCard = ({imageSrc, imageAlt, date = new Date(), title, label, small =
 			<div className='EventCard__month'>{getMonth(date)}</div>
 		</div>
 	</div>
-)};
+);
 
 EventCard.propTypes = {
 	imageSrc: PropTypes.string.isRequired,
