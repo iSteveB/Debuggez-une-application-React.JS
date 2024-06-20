@@ -15,27 +15,31 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
         <input
           type="text"
           name={name}
+          id={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required
         />
       );
       break;
     case FIELD_TYPES.TEXTAREA:
-      component = <textarea name={name} data-testid="field-testid" />;
+      component = <textarea name={name} id={name} data-testid="field-testid" required/>;
       break;
     default:
       component = (
         <input
           type="text"
           name={name}
+          id={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required
         />
       );
   }
   return (
     <div className="inputField">
-      <span>{label}</span>
+      <label htmlFor={name} data-testid="label-testid">{label}</label>
       {component}
     </div>
   );
