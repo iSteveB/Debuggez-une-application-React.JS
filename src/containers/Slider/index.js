@@ -9,30 +9,28 @@ const Slider = () => {
 	const [index, setIndex] = useState(0);
 	const [selectedRadio, setSelectedRadio] = useState(0);
 
-	const byDateDesc =
-		data?.focus?.sort((eventA, eventB) =>
-			new Date(eventA.date) < new Date(eventB.date) ? -1 : 1
-		) || [];
+	const byDateDesc = (data?.focus || []).sort(
+		(eventA, eventB) => new Date(eventB.date) - new Date(eventA.date)
+	);
 
 	const handleRadioInput = (radioIndex) => {
 		setSelectedRadio(radioIndex);
 		setIndex(radioIndex);
 	};
-  
-  const changeIndex = () => {
-    if (byDateDesc.length === 0) return;
 
-    setIndex((current) =>
-      current < byDateDesc.length - 1 ? current + 1 : 0
-    );
+	const changeIndex = () => {
+		if (byDateDesc.length === 0) return;
 
-    setSelectedRadio((current) =>
-      current < byDateDesc.length - 1 ? current + 1 : 0
-    );
-  };
+		setIndex((current) =>
+			current < byDateDesc.length - 1 ? current + 1 : 0
+		);
+
+		setSelectedRadio((current) =>
+			current < byDateDesc.length - 1 ? current + 1 : 0
+		);
+	};
 
 	useEffect(() => {
-
 		const interval = setTimeout(() => changeIndex(), 5000);
 
 		return () => clearTimeout(interval);
@@ -63,7 +61,7 @@ const Slider = () => {
 									type='radio'
 									name='radio-button'
 									onChange={() => {
-										handleRadioInput(radioIndex)
+										handleRadioInput(radioIndex);
 									}}
 									checked={selectedRadio === radioIndex}
 								/>
