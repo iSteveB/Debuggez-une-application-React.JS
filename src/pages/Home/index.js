@@ -77,6 +77,7 @@ const Page = () => {
 							imageSrc='/images/stephanie-liverani-Zz5LQe-VSMY-unsplash.png'
 							name='Samira'
 							position='CEO'
+
 						/>
 						<PeopleCard
 							imageSrc='/images/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.png'
@@ -126,8 +127,8 @@ const Page = () => {
 					</Modal>
 				</div>
 			</main>
-			<footer className='row'>
-				<div className='col presta'>
+			<footer className='row' data-testid='footer-testid'>
+				<div className='col presta' data-testid='event-card-footer-testid'>
 					<h3>Notre derniére prestation</h3>
 					{ lastEvent && <EventCard
 						imageSrc={lastEvent?.cover}

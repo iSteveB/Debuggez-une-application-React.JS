@@ -52,7 +52,7 @@ const EventList = () => {
 							value ? changeType(value) : changeType(null)
 						}
 					/>
-					<div id='events' className='ListContainer'>
+					<div id='events' className='ListContainer' data-testid='events-list-testid'>
 						{filteredEvents.map((event) => (
 							<Modal
 								key={event.id}
