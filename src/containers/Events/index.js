@@ -18,19 +18,10 @@ const EventList = () => {
 		return error ? <div>An error occurred</div> : 'loading';
 	}
 
-	const filteredEvents = (data?.events || []).filter(
-		(event, index) => {
-			if (
-				(currentPage - 1) * PER_PAGE <= index &&
-        PER_PAGE * currentPage > index && (
-          !type || event.type === type
-        )
-			) {
-				return true;
-			}
-			return false;
-		}
-	);
+	const filteredEvents = (data?.events || [])
+		.filter(event => !type || event.type === type)
+		.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+
 	const changeType = (eventType) => {
 		setCurrentPage(1);
 		setType(eventType);
