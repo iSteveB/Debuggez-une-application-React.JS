@@ -5,20 +5,13 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const Select = ({
-  selection,
-  onChange,
-  name,
-  titleEmpty,
-  label,
-  type = "normal",
-}) => {
+const Select = ({selection, onChange, name, titleEmpty, label, type = "normal",}) => {
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
     onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(!collapsed);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
@@ -36,14 +29,14 @@ const Select = ({
                   Toutes
                 </li>
               )}
-              {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+              {selection.map((selectedValue) => (
+                <li key={selectedValue} onClick={() => changeValue(selectedValue)}>
                   <input
-                    defaultChecked={value === s}
+                    defaultChecked={value === selectedValue}
                     name="selected"
                     type="radio"
                   />{" "}
-                  {s}
+                  {selectedValue}
                 </li>
               ))}
             </>
